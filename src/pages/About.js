@@ -1,9 +1,14 @@
-import React,{Fragment} from 'react'
+import React from 'react'
 
-export const About = () => {
-    return (
-        <Fragment>
-            <h1>About page</h1>
-        </Fragment>
-    )
-}
+//компоннет не будет иметь никакой функциональности
+//и поэтому будет сразу возвращать jsx
+export const About = () => (
+    <div className='jumbotron' style={ { marginTop: 20 } }>
+        <div className="container">
+            <h1 className="display-4">Лучшее React приложение</h1>
+            <p className="lead">
+                Версия прилодения <strong>1.0.42</strong>
+            </p>
+        </div>
+    </div>
+)
