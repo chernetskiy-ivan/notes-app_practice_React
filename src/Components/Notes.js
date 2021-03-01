@@ -6,9 +6,18 @@ export const Notes = ({notes}) => {
         <ul className='list-group'>
             {notes.map(note => (
                 <li
-                    className='list-group-item'
+                    className='list-group-item note'
                     key = {note.id}
-                >{note.title}</li>))}
+                >
+                    {note.title}
+
+                    <button
+                        type="button"
+                        className="btn btn-outline-danger btn-sm"
+                    >
+                        &times;
+                    </button>
+                </li>))}
         </ul>
     )
 }
