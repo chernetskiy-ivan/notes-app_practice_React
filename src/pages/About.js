@@ -7,7 +7,7 @@ export const About = () => (
         <div className="container">
             <h1 className="display-4">Лучшее React приложение</h1>
             <p className="lead">
-                Версия прилодения <strong>1.0.42</strong>
+                Версия приложения <strong>1.0.42</strong>
             </p>
         </div>
     </div>
