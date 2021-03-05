@@ -30,11 +30,30 @@ code {
 }
 
 .alert-enter-active {
-  transition: opacity 750ms ease-out;
+  transition: opacity 500ms ease-out;
   opacity: 1;
 }
 
 .alert-exit-active {
-  transition: opacity 750ms ease-out;
+  transition: opacity 350ms ease-out;
   opacity: 0;
+}
+
+.note-exit-active {
+  animation: note 800ms ease-out forwards;
+}
+
+@keyframes note {
+  0% {
+    transform: translateX(0);
+  }
+  30% {
+    opacity: .7;
+    transform: translateX(30px);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateX(-200px);
+  }
 }
