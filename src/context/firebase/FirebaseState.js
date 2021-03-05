@@ -2,7 +2,7 @@ import React,{useReducer} from 'react'
 import axios from 'axios'
 import {FirebaseContext} from "./firebaseContext";
 import {firebaseReducer} from "./firebaseReducer";
-import {REMOVE_NOTE, SHOW_LOADER} from '../types'
+import {FETCH_NOTE, REMOVE_NOTE, SHOW_LOADER, ADD_NOTE} from '../types'
 
 const url = process.env.REACT_APP_DB_URL
 
@@ -18,7 +18,13 @@ export const FirebaseState = ({children}) => {
     const fetchNotes = async () => {
         showLoader()
         const res = await axios.get(`${url}/notes.json`)
-        console.log('fetchNotes', res.data)
+        const payload = Object.keys(res.data).map(key => {
+            return {
+                ...res.data[key],
+                id: key
+            }
+        })
+        dispatch({type: FETCH_NOTE,payload})
     }
 
     const addNote = async title => {
@@ -28,7 +34,11 @@ export const FirebaseState = ({children}) => {
 
         try{
             const res = await axios.post(`${url}/notes.json`, note)
-            console.log('AddNote', res.data)
+            const payload = {
+                ...note,
+                id: res.data.name
+            }
+            dispatch({type: ADD_NOTE, payload})
         } catch (e) {
             throw new Error(e.message)
         }
